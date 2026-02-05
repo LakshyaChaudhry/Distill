@@ -1,0 +1,21 @@
+# Environment
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Output
+output/
+test_output/
+
+# Cache
+*.cache.json
+
+# OS
+.DS_Store
