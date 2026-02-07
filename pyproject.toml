@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "distill"
+version = "0.1.0"
+requires-python = ">=3.9"
+dependencies = [
+    "azure-ai-documentintelligence>=1.0.0",
+    "pymupdf>=1.24.0",
+    "requests>=2.31.0",
+    "python-dotenv>=1.0.0",
+    "anthropic>=0.40.0",
+    "jinja2>=3.1.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["distill*"]
+
+[project.scripts]
+distill = "distill.cli:main"
