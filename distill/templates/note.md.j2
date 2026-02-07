@@ -1,0 +1,60 @@
+---
+title: "{{ digest.title }}"
+authors: {{ digest.authors | tojson }}
+date: {{ digest.date }}
+venue: {{ digest.venue }}
+{% if digest.arxiv_id %}arxiv: "{{ digest.arxiv_id }}"
+{% endif %}tags: {{ digest.tags | tojson }}
+status: unread
+source: "{{ paper_data.source }}"
+---
+
+# {{ digest.title }}
+
+## Key Contribution
+{{ digest.key_contribution }}
+
+## Methodology
+{{ digest.methodology }}
+
+## Core Results
+{{ digest.core_results }}
+
+{% if figures %}
+## Figures
+{% for fig in figures %}
+![[{{ fig.filename }}]]
+{% if fig.caption %}*{{ fig.caption }}*{% endif %}
+
+{% endfor %}
+{% endif %}
+
+## Limitations
+{{ digest.limitations }}
+
+## Connections
+{% for concept in digest.connections %}
+- {{ concept | wikilink }}
+{% endfor %}
+
+{% if gaps %}
+## Research Gaps & Open Questions
+{% for question in gaps.open_questions %}
+- [ ] {{ question }}
+{% endfor %}
+
+### Extension Ideas
+{% for idea in gaps.extension_ideas %}
+- [ ] {{ idea }}
+{% endfor %}
+
+### Scaling Considerations
+{{ gaps.scaling_considerations }}
+
+{% if gaps.methodological_gaps %}
+### Methodological Gaps
+{% for gap in gaps.methodological_gaps %}
+- {{ gap }}
+{% endfor %}
+{% endif %}
+{% endif %}
