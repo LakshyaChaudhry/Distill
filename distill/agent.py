@@ -328,7 +328,9 @@ def run(source: str, output_dir: str, vault_path: str | None = None) -> None:
                     "content": result,
                 })
 
-        # FIX 4: append assistant message + tool results ONCE, outside the loop
+        # Append assistant message + tool results ONCE, outside the loop
         messages.append({"role": "assistant", "content": response.content})
         if tool_results:
             messages.append({"role": "user", "content": tool_results})
+        else:
+            break  # No tools called — nothing more to do
