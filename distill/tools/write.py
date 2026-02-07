@@ -8,11 +8,11 @@ from pathlib import Path
 
 from jinja2 import Environment, FileSystemLoader
 
-from distill.parser import PaperData
-from distill.agents.digest import PaperDigest
-from distill.agents.gaps import ResearchGaps
+from distill.tools.parse import PaperData
+from distill.tools.digest import PaperDigest
+from distill.tools.gaps import ResearchGaps
 
-TEMPLATES_DIR = Path(__file__).parent / "templates"
+TEMPLATES_DIR = Path(__file__).parent.parent / "templates"
 
 
 def sanitize_filename(title: str) -> str:
@@ -73,6 +73,7 @@ def render_note(
     gaps: ResearchGaps | None,
     output_dir: Path | str,
     figures_subdir: str = "attachments",
+    linked_concepts: list[str] | None = None,
 ) -> Path:
     """Render the final Obsidian markdown note.
 
@@ -104,6 +105,7 @@ def render_note(
         digest=digest,
         gaps=gaps,
         figures=figures,
+        linked_concepts=linked_concepts,
     )
 
     # Write file

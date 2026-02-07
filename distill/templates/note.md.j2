@@ -37,6 +37,13 @@ source: "{{ paper_data.source }}"
 - {{ concept | wikilink }}
 {% endfor %}
 
+{% if linked_concepts %}
+## Linked Vault Concepts
+{% for concept in linked_concepts %}
+- {{ concept | wikilink }}
+{% endfor %}
+{% endif %}
+
 {% if gaps %}
 ## Research Gaps & Open Questions
 {% for question in gaps.open_questions %}

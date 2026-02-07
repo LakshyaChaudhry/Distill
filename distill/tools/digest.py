@@ -8,7 +8,7 @@ from dataclasses import dataclass
 import anthropic
 from dotenv import load_dotenv
 
-from distill.parser import PaperData
+from distill.tools.parse import PaperData
 
 load_dotenv()
 

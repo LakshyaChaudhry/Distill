@@ -6,7 +6,7 @@ from dataclasses import dataclass
 import anthropic
 from dotenv import load_dotenv
 
-from distill.agents.digest import PaperDigest, prepare_content, _parse_llm_json
+from distill.tools.digest import PaperDigest, prepare_content, _parse_llm_json
 
 load_dotenv()
 
